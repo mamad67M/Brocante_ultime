@@ -24,9 +24,11 @@ class _LoginState extends State<Login> {
       'email' : email,
       'password' : password
     };
+    print(data);
     Uri uri = Uri.parse('http://jdevalik.fr/api/brocante/api/login.php');
-    var response = await http.post(uri, body : data);
+    var response = await http.post(uri, body : json.encode(data));
     print(uri.toString());
+    print(response.body);
     if (response.statusCode == 200) {
       //print('succeed');
       var jsonData = json.decode(response.body);
@@ -37,6 +39,9 @@ class _LoginState extends State<Login> {
       storage.write(key: "password", value: password);
       Navigator.pushNamed(context, '/home');
       //setState(() { });
+    }
+    if (response.statusCode == 401){
+      print('bad email OR bad password');
     }
   }
 
@@ -59,8 +64,9 @@ class _LoginState extends State<Login> {
             {
               _formkey.currentState.save();
               _signIn(email, password);
-              Navigator.pushNamed(context, '/admin');
+              //Navigator.pushNamed(context, '/home');
             }
+
 
           },
           child: Text(

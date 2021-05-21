@@ -48,10 +48,10 @@ class _StartScreenState extends State<StartScreen> {
                         ),
                       ),
                       Divider(
-                        height: 40.0,
+                        height: 20.0,
                         color: Colors.lightGreenAccent,
                       ),
-                      SizedBox(height: 10.0),
+                      SizedBox(height: 35.0),
 
                       CircleAvatar(
                         backgroundColor: Colors.white,

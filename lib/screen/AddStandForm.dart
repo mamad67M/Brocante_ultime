@@ -42,7 +42,7 @@ class _AddStandFormState extends State<AddStandForm> {
         'comment' : comment,
         'longueur' : longueur,
         'zoneid' : zero,
-        'brocanteid' : zero
+        'brocanteurid' : zero
       });
       var response = await http.post(uri,
           body: body);
@@ -157,7 +157,7 @@ class _AddStandFormState extends State<AddStandForm> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.green,
-            title: Text(editmode?'Modifier':'Ajout Album',
+            title: Text(editmode?'Modifier':'Ajout Stand',
           style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
@@ -203,7 +203,7 @@ class _AddStandFormState extends State<AddStandForm> {
                  }
 
             },
-                child: Icon(Icons.verified)
+                child: Icon(Icons.verified, color: Colors.green)
 
             ),
           ],

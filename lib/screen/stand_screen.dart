@@ -69,7 +69,7 @@ class _StandState extends State<Stand> {
                         child: Icon(Icons.edit),
                         onTap: (){
                           print('Button Edit User Clicked');
-                          Navigator.pushNamed(context,'/addstand');
+                          Navigator.pushNamed(context,'/add_stand');
                         },
                       ),
                       title: Text(list[index]['name']==null?'...':list[index]['name']),
@@ -90,7 +90,7 @@ class _StandState extends State<Stand> {
           floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add),
             backgroundColor: Colors.green,
-            onPressed: (){   Navigator.pushNamed(context, '/addstand');},
+            onPressed: (){   Navigator.pushNamed(context, '/add_stand');},
           ),
 
         )
