@@ -14,7 +14,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
 
   String email;
-  bool hideButton = true;
+  String password;
   bool val = false;
 
   _signIn(String email, String password) async {
@@ -46,9 +46,6 @@ class _LoginState extends State<Login> {
     });
   }
 
-
-  TextEditingController password = TextEditingController();
-
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   Widget _buildLoginBtn() {
@@ -57,13 +54,12 @@ class _LoginState extends State<Login> {
         width: double.infinity,
         child: ElevatedButton(
           onPressed: (){
-            _signIn('toto@gmail', 'me');
+            
             if(_formkey.currentState.validate())
             {
-              hideButton;
+              _formkey.currentState.save();
+              _signIn(email, password);
               Navigator.pushNamed(context, '/admin');
-            }else{
-              hideButton =false;
             }
 
           },
@@ -151,7 +147,6 @@ class _LoginState extends State<Login> {
                         bottom: 15, left: 10, right: 10),
                     child: TextFormField(
 
-                      controller: password,
                       keyboardType: TextInputType.text,
                       decoration: buildInputDecoration(
                           Icons.lock, "Mot de Passe"),
@@ -164,6 +159,9 @@ class _LoginState extends State<Login> {
                           return ' le mot de passe doit contenir au moins 6 caracteres ';
                         }
                         return null;
+                      },
+                        onSaved: (String value) {
+                        password = value;
                       },
                     ),
                   ),
