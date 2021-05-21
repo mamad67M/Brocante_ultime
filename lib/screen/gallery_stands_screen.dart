@@ -57,7 +57,7 @@ class GalleryVillagePhotos extends StatelessWidget {
                     ),
                     itemBuilder: (BuildContext context, int index){
                       List list = snapshot.data;
-                      return Image.network("http://10.0.2.2/API/Employee/api/uploads/${list[index]['filename']}");
+                      return Image.network("http://jdevalik.fr/api/brocante/api/uploads/${list[index]['filename']}");
                 }
             )
             )

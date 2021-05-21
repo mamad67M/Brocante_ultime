@@ -24,7 +24,7 @@ class _StartScreenState extends State<StartScreen> {
                 height: double.infinity,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    color: Colors.red
+                    color: Colors.grey[800]
                 ),
               ),
               Container(
@@ -42,7 +42,7 @@ class _StartScreenState extends State<StartScreen> {
                         style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            color: Colors.red,
                           fontFamily:  'IndieFlower',
                           letterSpacing: 3.5
                         ),
@@ -56,7 +56,7 @@ class _StartScreenState extends State<StartScreen> {
                       CircleAvatar(
                         backgroundColor: Colors.white,
                         radius: 70,
-                        child: //Image.network("http://10.0.2.2/API/Employee/api/uploads/woman.jpg")
+                        child:
                         Image(
                             image: AssetImage('assets/woman.jpg',
                             )

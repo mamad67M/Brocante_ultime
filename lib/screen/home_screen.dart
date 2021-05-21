@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                    title: Text((_token==null)?"BROCANTE":"B $_token",
                    style: TextStyle(fontFamily: 'IndieFlower',
                    fontSize: 20,
-                   letterSpacing: 3,
+                   letterSpacing: 2.5,
                    fontWeight: FontWeight.bold),
                    ),
             actions: [

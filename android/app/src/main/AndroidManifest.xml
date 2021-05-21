@@ -3,7 +3,8 @@
    <application
         android:label="ultime_brocante"
         android:icon="@mipmap/ic_launcher">
-        <activity
+
+       <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
@@ -38,4 +39,8 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
 </manifest>

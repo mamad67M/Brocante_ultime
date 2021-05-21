@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter_app_brocante/widgets/DrawerSideBar.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -24,15 +23,13 @@ class _StandState extends State<Stand> {
     }
   }
 
-  Future deleteUser(int id) async {
+  Future _deleteStand(String id) async {
     var url = "http://jdevalik.fr/api/brocante/api/deletestand.php";
     Uri uri = Uri.parse(url);
     try {
-      var response = await http.post(uri,body: jsonEncode(<String, String>{"id": id.toString()}));
-      setState(() {
-
-      });
-      //return json.decode(response.body);
+      var response = await http.post(uri,
+                     body: jsonEncode(<String, String>{"id": id}));
+      print(response.body);
     } catch (e) {
       print('error Url Delete Emplacement');
       print(e.toString());
@@ -45,12 +42,12 @@ class _StandState extends State<Stand> {
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.green,
-            title:Text('MODERATION',
+            title:Text('Moderation',
                 style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'IndieFlower',
-                    letterSpacing: 3
+                    letterSpacing: 2
                 )
             ),
             centerTitle: true,
@@ -72,7 +69,7 @@ class _StandState extends State<Stand> {
                         child: Icon(Icons.edit),
                         onTap: (){
                           print('Button Edit User Clicked');
-                          Navigator.pushNamed(context, '/addedituser');
+                          Navigator.pushNamed(context,'/addstand');
                         },
                       ),
                       title: Text(list[index]['name']==null?'...':list[index]['name']),
@@ -81,19 +78,19 @@ class _StandState extends State<Stand> {
                         onTap: (){
                           print('Button Delete User Clicked');
                           // récupère l'id de l'enregistrement courant
-                          int id = list[index]['id'];
-                          deleteUser(id);
+                          _deleteStand(list[index]['id']);
                         },
                       ),
                     );
                   }
               )
-                  : CircularProgressIndicator();
+                  : Center(child: CircularProgressIndicator());
             },
           ),
           floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add),
-            onPressed: (){   Navigator.pushNamed(context, '/addeditstand');},
+            backgroundColor: Colors.green,
+            onPressed: (){   Navigator.pushNamed(context, '/addstand');},
           ),
 
         )
