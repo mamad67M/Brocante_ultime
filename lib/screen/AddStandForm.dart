@@ -17,14 +17,12 @@ class AddStandForm extends StatefulWidget {
 
 class _AddStandFormState extends State<AddStandForm> {
 
+  String id;
   String numemp;
   String comment;
   String name;
   String longueur;
   String zero;
-
-
-
 
   bool editmode = false;
 
@@ -32,37 +30,74 @@ class _AddStandFormState extends State<AddStandForm> {
 
   Future addUpdateData() async{
     print('Enter API call Stand');
-    var url = "http://jdevalik.fr/api/brocante/api/createstand.php";
-    Uri uri = Uri.parse(url);
-    try {
-      String body;
-      body = jsonEncode(<String, String>{
-        'numemp' : numemp,
-        'name' : name,
-        'comment' : comment,
-        'longueur' : longueur,
-        'zoneid' : zero,
-        'brocanteurid' : zero
-      });
-      var response = await http.post(uri,
-          body: body);
-      print('API call stand Done');
-      print(body);
+    if (!editmode) {
+      var url = "http://jdevalik.fr/api/brocante/api/createstand.php";
+      Uri uri = Uri.parse(url);
+      try {
+        String body;
+        body = jsonEncode(<String, String>{
+          'numemp': numemp,
+          'name': name,
+          'comment': comment,
+          'longueur': longueur,
+          'zoneid': zero,
+          'brocanteurid': zero
+        });
+        var response = await http.post(uri,
+            body: body);
+        print('API call stand Done');
+        print(body);
 
-      // return json.decode(response.body);
-    } catch (e) {
-      print('error Url Create Stand');
-      //print("Error" + e.toString());
+        // return json.decode(response.body);
+      } catch (e) {
+        print('error Url Create Stand');
+      }
+    }else{
+      var url = "http://jdevalik.fr/api/brocante/api/updatestand.php";
+      Uri uri = Uri.parse(url);
+      try {
+        String body;
+        body = jsonEncode(<String, String>{
+          'id': id,
+          'numemp': numemp,
+          'name': name,
+          'comment': comment,
+          'longueur': longueur,
+          'zoneid': zero,
+          'brocanteurid': zero
+        });
+        var response = await http.post(uri,
+            body: body);
+        print('API call stand Done');
+        print(body);
+
+        // return json.decode(response.body);
+      } catch (e) {
+        print('error Url Create Stand');
+
+      }
+
     }
   }
 
   @override
   void initState() {
-    // TODO: implement initState
-    if(widget.index!=null){
-      editmode = true;
-         }
     super.initState();
+    // TODO: implement initState
+    print(widget.index);
+    if(widget.list!=null){
+      editmode = true;
+      print('edit mode');
+      id       = widget.list[widget.index]['id'];
+      numemp   = widget.list[widget.index]['nuemp'];
+      comment  = widget.list[widget.index]['comment'];
+      name     = widget.list[widget.index]['name'];
+      longueur = widget.list[widget.index]['longueur'];
+    }
+    else{
+      print('create mode');
+    }
+
   }
 
   @override

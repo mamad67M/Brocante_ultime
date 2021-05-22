@@ -37,13 +37,15 @@ class _DrawerSideBarState extends State<DrawerSideBar> {
                   () => {Navigator.pushNamed(context, '/service')}),
           CustomListTile(Icons.person, 'Login',
                   () => {Navigator.pushNamed(context, '/login')}),
-          CustomListTile(Icons.camera_alt, 'Camera',
-                  () => {Navigator.pushNamed(context, '/camera')}),
-          Visibility(
-            visible: widget.isVisible,
-            child: CustomListTile(Icons.lock, 'admin',
-                    () => {Navigator.pushNamed(context, '/admin')}),
-          ),
+      Visibility(
+         visible: widget.isVisible,
+         child:CustomListTile(Icons.camera_alt, 'Camera',
+                  () => {Navigator.pushNamed(context, '/camera')})),
+          // Visibility(
+          //   visible: widget.isVisible,
+          //   // child: CustomListTile(Icons.lock, 'admin',
+          //   //         () => {Navigator.pushNamed(context, '/admin')}),
+          // ),
         ],
       ),
     );

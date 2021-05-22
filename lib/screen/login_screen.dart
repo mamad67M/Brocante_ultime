@@ -16,6 +16,7 @@ class _LoginState extends State<Login> {
   String email;
   String password;
   bool val = false;
+  String _errorPasswordOrEmailWrong = "";
 
   _signIn(String email, String password) async {
     print('login');
@@ -37,10 +38,18 @@ class _LoginState extends State<Login> {
       storage.write(key: "token", value: jsonData['token']);
       storage.write(key: "login", value: email);
       storage.write(key: "password", value: password);
+     // setState(() {
+     //   _errorPasswordOrEmailWrong = "";
+     // });
+
       Navigator.pushNamed(context, '/home');
-      //setState(() { });
+
     }
     if (response.statusCode == 401){
+      setState(() {
+        _errorPasswordOrEmailWrong = 'Email et/ou mot de passe incorrect(s)';
+      });
+
       print('bad email OR bad password');
     }
   }
@@ -191,7 +200,9 @@ class _LoginState extends State<Login> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 10),
+                  Text(_errorPasswordOrEmailWrong),
+                  SizedBox(height: 10),
 
                    Padding(
                      padding: const EdgeInsets.all(14),

@@ -53,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Scaffold(
           appBar: AppBar(
                    backgroundColor: Colors.green,
-                   title: Text((_token==null)?"BROCANTE":"B $_token",
+                   title: Text((_token==null)?"BROCANTE":"B connected",
                    style: TextStyle(fontFamily: 'IndieFlower',
                    fontSize: 20,
                    letterSpacing: 2.5,

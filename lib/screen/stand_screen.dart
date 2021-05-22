@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:flutter_app_brocante/widgets/DrawerSideBar.dart';
+import 'package:flutter_app_brocante/screen/AddStandForm.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -65,13 +67,15 @@ class _StandState extends State<Stand> {
                   itemBuilder: (context,index){
                     List list = snapshot.data;
                     return ListTile(
-                      leading: GestureDetector(
-                        child: Icon(Icons.edit),
-                        onTap: (){
-                          print('Button Edit User Clicked');
-                          Navigator.pushNamed(context,'/add_stand');
-                        },
-                      ),
+                      // leading: GestureDetector(
+                      //   child: Icon(Icons.edit),
+                      //   onTap: (){
+                      //     print('Button Edit User Clicked');
+                      //     Navigator.pushNamed(context,'/add_stand');
+                      //     MaterialPageRoute(builder: (context) => AddStandForm(list:list,index:index));
+                      //   },
+
+                     // ),
                       title: Text(list[index]['name']==null?'...':list[index]['name']),
                       trailing: GestureDetector(
                         child: Icon(Icons.delete),
@@ -88,8 +92,8 @@ class _StandState extends State<Stand> {
             },
           ),
           floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.add),
             backgroundColor: Colors.green,
+            child: Icon(Icons.add,),
             onPressed: (){   Navigator.pushNamed(context, '/add_stand');},
           ),
 
